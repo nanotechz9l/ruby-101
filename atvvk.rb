@@ -228,6 +228,7 @@ Define the following Ruby Logical operators:
 "!"      Called Logical NOT Operator. Reverses the logical state of its operand. If a condition is true then Logical NOT operator will make false.
 "&&"     Called Logical AND operator. If both the operands are non zero then then condition becomes true.
 "||"     Called Logical OR Operator. If any of the two operands are non zero then then condition becomes true.
+"||="    Conditional assignment operator. Assign a variable if it hasnt already been assigned.
 "and"    Called Logical AND operator. If both the operands are true then then condition becomes true.
 "or"     Called Logical OR Operator. If any of the two operands are non zero then then condition becomes true.
 "not"    Use to reverses the logical state of its operand. If a condition is true then Logical NOT operator will make false.
@@ -263,7 +264,7 @@ Define the following Ruby Range operators:
 
 Define the following Ruby Assignment operators:
 "="      Simple assignment operator, Assigns values from right side operands to left side operand
-"+="     Add AND assignment operator, It adds right operand to the left operand and assign the result to left operands
+"+="     Add AND assignment operator, It adds right operand to the left operand and assigns the result to left operands
 "-="     Subtract AND assignment operator, It subtracts right operand from the left operand and assign the result to left operand
 "*="     Multiply AND assignment operator, It multiplies right operand with the left operand and assign the result to left operand
 "/="     Divide AND assignment operator, It divides left operand with the right operand and assign the result to left operand    
@@ -670,7 +671,7 @@ Define the following Ruby Variable Scope Indicators:
                When you want to preserve the order, and the the position matters.
                  
                Hashes(Labeled) have an assigned label(key), and its contents(value). 
-               When to use an hash:
+               When to use a hash:
                When the order does not matter, and you want the convinience of having that label to be able to refer to values as labels instead of having to remember what was in index position # 7? This is not needed, as a hash can used. Other programming languages might refer to them as dictionaries.
 
 =end
@@ -678,7 +679,11 @@ Define the following Ruby Variable Scope Indicators:
                # Array example
                developer = ['Rick', 'Flores', 'exploitdev', 'green', 'black'] # <- array
                => ["Rick", "Flores", "exploitdev", "green", "black"]
-               # Using an array with this type of data is very restricted because is has lack of detail. This array simply does not tell you what is what; example: how long has he been doing exploitdev, is green the color of his eyes, or his favorite color, is black the color of his t-shirts, or the color of his laptop? These questions can not be easily answered by using an aray, and thus a hash with labels is needed. See below.
+               # Using an array with this type of data is very restricted because its lack of detail. 
+	       # This array simply does not tell you what is what; example: how long has he been doing exploitdev, 
+	       # is green the color of his eyes, or his favorite color, is black the color of his t-shirts, 
+	       # or the color of his laptop? These questions can not be easily answered by using an array, 
+	       # and thus a hash with labels is needed. See below.
 	       
 	       # Hash example
 	       developer = {'first_name' => 'Rick', 'last_name' => 'Flores'}
@@ -1067,6 +1072,17 @@ Logical NOT operator will make false. It also checks if the value of two operand
      
      # The exact same thing as the if statements in the previous lesson, we've just re-written it using the case operator. It might even have more lines of code, infact it does. However, using case has several advantages when doing long, complex parallel assignments.
      
+     def fib_up_to(max)
+  i1, i2 = 1, 1 # parallel assignment (i1 = 1 and i2 = 1)
+  while i1 <= max
+    yield i1
+    i1, i2 = i2, i1+i2
+  end
+end
+
+fib_up_to(1000) {|f| print f, " " } 
+puts
+
      # When we start to have alot of these complex decision making routines, it is best to use the case operator as a short hand method.
      
      # When x =1 do this, When x =2 do this, When x =3 do this ...etc
